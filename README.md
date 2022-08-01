@@ -7,4 +7,4 @@ by Jonathan Mills
 run `npm install`
 to install dependencies
 
-then run `npm start` to start the app
+then run `npm start` to start the app on `localhost:4000`
