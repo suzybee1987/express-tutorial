@@ -4,7 +4,16 @@ const debug = require('debug')('app:sessionRouter');
 const { MongoClient, ObjectID } = require('mongodb');
 
 const sessionRouter = express.Router();
-sessionRouter.route('/')
+
+sessionRouter.use((req, res, next) => {
+    if (req.user) {
+        next();
+    } else {
+        res.redirect('auth/signIn');
+    }
+});
+sessionRouter
+    .route('/')
     .get((req, res) => {
         const url = 'mongodb+srv://dfu05229:syM0UvKhtc5sgMMo@globomantics.2ljjl.mongodb.net/?retryWrites=true&w=majority';
         const dbName = 'globomantics';
